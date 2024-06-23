@@ -312,3 +312,18 @@ textarea{
     color: #888888;
     cursor: pointer;
 }
+/* -----------adresss-------- */
+.adress .adress-container{
+    display: block;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: url(imgs/istockphoto-1393820732-1024x1024.jpg);
+}
+.adress-container{
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 0;
+}
+
