@@ -196,6 +196,126 @@
        <div class="end-img">
         <img src="imgs/elegantthemes-900x120.jpg" alt="">
        </div>
+
+
+
+
+          //KPDL
+          import pandas as pd
+
+
+#doc tep du lieu 
+df = pd.read_csv('car-sales-missing-data.csv')
+
+#kiem tra du lieu rong hoac thieu
+missing_values = df.isnull().sum()
+
+#hien thi ket qua ra man hinh
+print("so luong gia tri rong hoac thieu trong moi cot la:")
+print(missing_values)
+
+          import pandas as pd
+
+#doc tep du lieu 
+df = pd.read_csv('car-sales-missing-data.csv')
+
+#dem so gia tri duy nhat qua cac cot
+unique_make = df['Make'].nunique()
+unique_colour = df['Colour'].nunique()
+
+#hien thi ket qua
+print(f"so gia tri duy nhat trong cot la: 'Make':{unique_make}")
+print(f"so gia tri duy nhat trong mot cot 'colour':{unique_colour}")
+
+
+          import pandas as pd
+
+#doc tep du lieu 
+df = pd.read_csv('car-sales-missing-data.csv')
+ 
+#kiem tra du lieu trung lap
+duplicates = df.duplicated()
+print("cac hang trung lap:")
+print(df[duplicates])
+
+#xoa cac du lieu trung lap
+df_cleaned = df.drop_duplicates()
+
+#hien thi lai du lieu sau khi xoa du lieu trung lap
+print("sau khi xoa du lieu trung lap ta co du lieu sau")
+print(df_cleaned)
+
+          import pandas as pd
+
+#doc tep du lieu 
+df = pd.read_csv('car-sales-missing-data.csv')
+
+#xu li cot Odemeter
+#loai bo cac ki tu khong phai la so
+df['Odometer'] = df['Odometer'].astype(str).str.replace(r'[^0-9]','',regex=True)
+                                                        
+#chuyen doi sang kieu so
+df['Odometer'] = pd.to_numeric(df['Odometer'],errors='coerce')
+
+#hien thi lai bang sau khi xu li du lieu sang kieu so
+print("sau khi xu li cot odemeter:")
+print(df)
+
+
+          import pandas as pd
+
+#doc tep du lieu 
+df = pd.read_csv('car-sales-missing-data.csv')
+
+#xu li cot Price
+#loai bo dau $ va dau phay
+df['Price'] = df['Price'].str.replace(r'[\$,]','',regex=True)
+
+#chuyen doi sang kieu so 
+df['Price'] = pd.to_numeric(df['Price'],errors='coerce')
+
+#hien thi lai du lieu sau khi duoc xu li 
+print("sau khi xu li cot Price :")
+print(df)
+
+          import pandas as pd
+
+#doc tep du lieu 
+df = pd.read_csv('car-sales-missing-data.csv')
+
+#xu li cot Odemeter
+#loai bo cac ki tu khong phai la so
+df['Odometer'] = df['Odometer'].astype(str).str.replace(r'[^0-9]','',regex=True)
+                                                        
+#chuyen doi sang kieu so
+df['Odometer'] = pd.to_numeric(df['Odometer'],errors='coerce')
+
+#loai bo dau $ va dau phay
+df['Price'] = df['Price'].str.replace(r'[\$,]','',regex=True)
+
+#chuyen doi sang kieu so 
+df['Price'] = pd.to_numeric(df['Price'],errors='coerce')
+#xoa du lieu thieu
+df_dropped = df.dropna()
+
+#dien du lieu thieu
+df_filled = df.fillna({
+    'Colour':"Null",
+    #dien gia tri trung binh cho cot odemeter
+    'Odometer':df['Odometer'].mean(),
+    #dien gia tri trung vi cho cot Price
+    'Price':df['Price'].median()
+})
+
+#hien thi ket qua sau khi xu li
+print("sau khi xoa du lieu thieu:")
+print(df_dropped)
+
+print("sau khi dien du lieu thieu:")
+print(df_filled)
+//
+df['Odometer'].unique()
+          df['Odometer'].dtype
       
 </body>
 </html>
